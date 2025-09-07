@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int low, high;
+
+    cout << "Enter lower limit: ";
+    cin >> low;
+    cout << "Enter upper limit: ";
+    cin >> high;
+
+    cout << "Prime numbers between " << low << " and " << high << " are: ";
+
+    for (int num = low; num <= high; num++) {
+        if (num < 2) continue; 
+
+        bool isPrime = true;
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+
+        if (isPrime) {
+            cout << num << " ";
+        }
+    }
+
+    cout << endl;
+    return 0;
+}
