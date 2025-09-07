@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string username, password;
+
+    cout << "Enter username: ";
+    cin >> username;
+
+    cout << "Enter password: ";
+    cin >> password;
+
+  
+    if (username.length() < 6) {
+        cout << "Username too short! Must be at least 6 characters." << endl;
+    } 
+    else if (username.length() > 12) {
+        cout << "Username too long! Must be at most 12 characters." << endl;
+    } 
+
+    else if (password.length() < 8) {
+        cout << "Password too short! Must be at least 8 characters." << endl;
+    } 
+    else if (password.length() > 15) {
+        cout << "Password too long! Must be at most 15 characters." << endl;
+    } 
+    else {
+        cout << "Login successful ✅" << endl;
+    }
+
+    return 0;
+}
