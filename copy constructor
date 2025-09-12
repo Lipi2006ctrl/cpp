@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+class Student {
+private:
+    int id;
+    string name;
+
+public:
+    // Parameterized constructor
+    Student(int i, string n) {
+        id = i;
+        name = n;
+    }
+
+    // Copy constructor
+    Student(const Student &s) {
+        id = s.id;
+        name = s.name;
+        cout << "Copy constructor called!" << endl;
+    }
+
+    void display() {
+        cout << "ID: " << id << ", Name: " << name << endl;
+    }
+};
+
+int main() {
+    Student s1(101, "Lipi");   // Normal constructor
+    Student s2 = s1;           // Copy constructor is called
+
+    cout << "Student 1 details: ";
+    s1.display();
+    cout << "Student 2 details: ";
+    s2.display();
+
+    return 0;
+}
