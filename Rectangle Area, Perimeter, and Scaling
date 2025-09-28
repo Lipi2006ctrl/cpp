@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+class Rectangle {
+    double length, breadth;
+public:
+    Rectangle(double l, double b) : length(l), breadth(b) {}
+    double area() { return length * breadth; }
+    double perimeter() { return 2 * (length + breadth); }
+
+    void scale(double factor = 1.5) {
+        length *= factor;
+        breadth *= factor;
+    }
+
+    void display() {
+        cout << "Length: " << length << ", Breadth: " << breadth
+             << ", Area: " << area()
+             << ", Perimeter: " << perimeter() << endl;
+    }
+};
+
+int main() {
+    Rectangle r1(4, 5);
+    r1.display();
+    r1.scale();   // default scaling
+    r1.display();
+
+    Rectangle r2(6, 3);
+    r2.scale(0.5); // scaling down
+    r2.display();
+
+    return 0;
+}
