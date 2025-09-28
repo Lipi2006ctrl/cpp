@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Point {
+    double x, y;
+public:
+    Point(double xVal, double yVal) : x(xVal), y(yVal) {}
+    double distance(Point p) {
+        return sqrt(pow(x - p.x, 2) + pow(y - p.y, 2));
+    }
+    void move(double dx, double dy) {
+        x += dx; y += dy;
+    }
+    void display() {
+        cout << "(" << x << ", " << y << ")" << endl;
+    }
+};
+
+int main() {
+    Point p1(2, 3), p2(5, 7);
+    cout << "Point 1: "; p1.display();
+    cout << "Point 2: "; p2.display();
+    cout << "Distance: " << p1.distance(p2) << endl;
+
+    p1.move(1, -1);
+    cout << "After moving P1: "; p1.display();
+    return 0;
+}
