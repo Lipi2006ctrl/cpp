@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+class Circle {
+    double radius;
+public:
+    Circle(double r) : radius(r) {}
+    inline double area() { return 3.14159 * radius * radius; }
+    inline double circumference() { return 2 * 3.14159 * radius; }
+
+    static void compare(Circle c1, Circle c2) {
+        if (c1.radius > c2.radius)
+            cout << "Circle 1 is larger." << endl;
+        else if (c1.radius < c2.radius)
+            cout << "Circle 2 is larger." << endl;
+        else
+            cout << "Both circles are equal." << endl;
+    }
+};
+
+int main() {
+    Circle c1(5), c2(7);
+    cout << "Circle 1 Area: " << c1.area() << endl;
+    cout << "Circle 2 Circumference: " << c2.circumference() << endl;
+    Circle::compare(c1, c2);
+    return 0;
+}
