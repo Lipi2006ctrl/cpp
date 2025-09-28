@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+class Demo {
+    int x;
+public:
+    Demo(int val = 0) { x = val; } 
+    inline void display() { cout << "Value: " << x << endl; } 
+    friend void showDouble(Demo d); 
+};
+
+void showDouble(Demo d) {
+    cout << "Double value: " << d.x * 2 << endl;
+}
+
+int main() {
+    Demo d1(5), d2; 
+    d1.display();
+    showDouble(d1);
+    d2.display();  // default value
+    return 0;
+}
