@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+class Serial {
+    static int count;    // shared by all objects
+    int serialNo;
+public:
+    Serial() {
+        count++;
+        serialNo = count;
+    }
+    void report() {
+        cout << "I am object number " << serialNo << endl;
+    }
+};
+
+int Serial::count = 0;  // initialize static member
+
+int main() {
+    Serial obj1, obj2, obj3;
+    obj1.report();
+    obj2.report();
+    obj3.report();
+    return 0;
+}
