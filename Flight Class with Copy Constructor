@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class Flight {
+    int flightNo;
+    string source, destination;
+    float fare;
+public:
+    Flight(int f, string s, string d, float fr) { // parameterized constructor
+        flightNo = f;
+        source = s;
+        destination = d;
+        fare = fr;
+    }
+    Flight(const Flight &f) { // copy constructor
+        flightNo = f.flightNo;
+        source = f.source;
+        destination = f.destination;
+        fare = f.fare;
+    }
+    void display() {
+        cout << "Flight No: " << flightNo
+             << ", Source: " << source
+             << ", Destination: " << destination
+             << ", Fare: " << fare << endl;
+    }
+};
+
+int main() {
+    Flight f1(101, "Chennai", "Delhi", 5500.75);
+    Flight f2 = f1; // copy constructor
+
+    cout << "Original Flight Details:\n";
+    f1.display();
+
+    cout << "Copied Flight Details:\n";
+    f2.display();
+
+    return 0;
+}
