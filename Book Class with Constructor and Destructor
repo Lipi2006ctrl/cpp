@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+class Book {
+    string title, author;
+    int pages;
+public:
+    Book() { // default constructor
+        title = "Unknown";
+        author = "Unknown";
+        pages = 0;
+    }
+    Book(string t, string a, int p) { // parameterized constructor
+        title = t;
+        author = a;
+        pages = p;
+    }
+    ~Book() { // destructor
+        cout << "Destroying book: " << title << endl;
+    }
+    void display() {
+        cout << "Title: " << title
+             << ", Author: " << author
+             << ", Pages: " << pages << endl;
+    }
+};
+
+int main() {
+    Book b1;                  // default constructor
+    Book b2("C++ Basics", "Bjarne Stroustrup", 350); // parameterized
+    Book b3("Algorithms", "CLRS", 1200);
+
+    b1.display();
+    b2.display();
+    b3.display();
+
+    return 0;
+}
