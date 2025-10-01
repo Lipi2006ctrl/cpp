@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+class Distance {
+    int feet, inches;
+public:
+    Distance(int f, int i) {
+        feet = f; inches = i;
+    }
+    void display() {
+        cout << feet << " feet " << inches << " inches" << endl;
+    }
+    void operator--() {  // overload -- operator
+        inches--;
+        if (inches < 0) {
+            feet--;
+            inches = 11;
+        }
+    }
+};
+
+int main() {
+    Distance d(5, 0);
+    cout << "Original Distance: ";
+    d.display();
+
+    --d; // decrease by 1 inch
+    cout << "After Decrement: ";
+    d.display();
+    return 0;
+}
