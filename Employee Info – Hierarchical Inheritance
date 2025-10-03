@@ -1,0 +1,79 @@
+#include <iostream>
+using namespace std;
+
+class Employee {
+protected:
+    int id;
+    string name;
+public:
+    void readEmployee() {
+        cout << "Enter Employee ID: ";
+        cin >> id;
+        cout << "Enter Employee Name: ";
+        cin >> name;
+    }
+    void displayEmployee() {
+        cout << "ID: " << id << ", Name: " << name;
+    }
+};
+
+class Manager : public Employee {
+    string dept;
+public:
+    void readManager() {
+        readEmployee();
+        cout << "Enter Department: ";
+        cin >> dept;
+    }
+    void displayManager() {
+        displayEmployee();
+        cout << ", Department: " << dept << endl;
+    }
+};
+
+class Worker : public Employee {
+    float wage;
+public:
+    void readWorker() {
+        readEmployee();
+        cout << "Enter Wage: ";
+        cin >> wage;
+    }
+    void displayWorker() {
+        displayEmployee();
+        cout << ", Wage: " << wage << endl;
+    }
+};
+
+class Intern : public Employee {
+    int duration;
+public:
+    void readIntern() {
+        readEmployee();
+        cout << "Enter Duration (months): ";
+        cin >> duration;
+    }
+    void displayIntern() {
+        displayEmployee();
+        cout << ", Duration: " << duration << " months" << endl;
+    }
+};
+
+int main() {
+    Manager m;
+    Worker w;
+    Intern i;
+
+    cout << "\n--- Enter Manager Info ---\n";
+    m.readManager();
+    cout << "\n--- Enter Worker Info ---\n";
+    w.readWorker();
+    cout << "\n--- Enter Intern Info ---\n";
+    i.readIntern();
+
+    cout << "\n--- Employee Details ---\n";
+    m.displayManager();
+    w.displayWorker();
+    i.displayIntern();
+    return 0;
+}
