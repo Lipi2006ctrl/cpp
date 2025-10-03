@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+class Fruit {
+protected:
+    static int totalFruits;
+public:
+    Fruit() { }
+    static int getTotalFruits() { return totalFruits; }
+};
+int Fruit::totalFruits = 0;
+
+class Apples : public Fruit {
+    int apples;
+public:
+    Apples(int a) {
+        apples = a;
+        totalFruits += a;
+    }
+    int getApples() { return apples; }
+};
+
+class Mangoes : public Fruit {
+    int mangoes;
+public:
+    Mangoes(int m) {
+        mangoes = m;
+        totalFruits += m;
+    }
+    int getMangoes() { return mangoes; }
+};
+
+int main() {
+    Apples a(5);
+    Mangoes m(7);
+
+    cout << "Number of Apples: " << a.getApples() << endl;
+    cout << "Number of Mangoes: " << m.getMangoes() << endl;
+    cout << "Total Fruits: " << Fruit::getTotalFruits() << endl;
+    return 0;
+}
