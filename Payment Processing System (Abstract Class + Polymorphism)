@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class PaymentMethod {
+public:
+    virtual void processPayment(float amount) = 0; 
+    virtual ~PaymentMethod() {}
+};
+
+class CreditCard : public PaymentMethod {
+public:
+    void processPayment(float amount) override {
+        cout << "Processing Credit Card payment of Rs." << amount << endl;
+    }
+};
+
+class PayPal : public PaymentMethod {
+public:
+    void processPayment(float amount) override {
+        cout << "Processing PayPal payment of Rs." << amount << endl;
+    }
+};
+
+class BankTransfer : public PaymentMethod {
+public:
+    void processPayment(float amount) override {
+        cout << "Processing Bank Transfer payment of Rs." << amount << endl;
+    }
+};
+
+int main() {
+    vector<PaymentMethod*> payments;
+    payments.push_back(new CreditCard());
+    payments.push_back(new PayPal());
+    payments.push_back(new BankTransfer());
+
+    cout << "--- Payment Processing ---" << endl;
+    payments[0]->processPayment(2500);
+    payments[1]->processPayment(5000);
+    payments[2]->processPayment(10000);
+
+    for (auto p : payments) delete p;
+    return 0;
+}
