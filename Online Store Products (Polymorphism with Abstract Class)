@@ -1,0 +1,58 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Product {
+public:
+    virtual void displayDetails() = 0;        
+    virtual void calculateDiscount() = 0;     
+    virtual ~Product() {}
+};
+
+class Electronics : public Product {
+public:
+    void displayDetails() override {
+        cout << "Electronics: Laptop, Price = 50000" << endl;
+    }
+    void calculateDiscount() override {
+        cout << "Discount on Electronics: 10%" << endl;
+    }
+};
+
+class Clothing : public Product {
+public:
+    void displayDetails() override {
+        cout << "Clothing: Shirt, Price = 2000" << endl;
+    }
+    void calculateDiscount() override {
+        cout << "Discount on Clothing: 20%" << endl;
+    }
+};
+
+class Grocery : public Product {
+public:
+    void displayDetails() override {
+        cout << "Grocery: Rice Bag, Price = 1000" << endl;
+    }
+    void calculateDiscount() override {
+        cout << "Discount on Grocery: 5%" << endl;
+    }
+};
+
+int main() {
+    vector<Product*> store;
+    store.push_back(new Electronics());
+    store.push_back(new Clothing());
+    store.push_back(new Grocery());
+
+    cout << "--- Store Products ---" << endl;
+    for (auto product : store) {
+        product->displayDetails();
+        product->calculateDiscount();
+        cout << endl;
+    }
+
+    // Free memory
+    for (auto product : store) delete product;
+    return 0;
+}
