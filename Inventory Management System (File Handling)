@@ -1,0 +1,79 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+class Item {
+public:
+    string name;
+    int qty;
+    float price;
+
+    void getData() {
+        cout << "Enter Item Name: ";
+        cin >> name;
+        cout << "Enter Quantity: ";
+        cin >> qty;
+        cout << "Enter Price: ";
+        cin >> price;
+    }
+    void display() {
+        cout << name << " | Qty: " << qty << " | Price: " << price << endl;
+    }
+};
+
+// Function to load inventory from file
+void loadInventory(vector<Item>& items) {
+    ifstream fin("inventory.txt");
+    Item temp;
+    while (fin >> temp.name >> temp.qty >> temp.price) {
+        items.push_back(temp);
+    }
+    fin.close();
+}
+
+// Function to save inventory to file
+void saveInventory(vector<Item>& items) {
+    ofstream fout("inventory.txt");
+    for (auto &it : items) {
+        fout << it.name << " " << it.qty << " " << it.price << endl;
+    }
+    fout.close();
+}
+
+int main() {
+    vector<Item> inventory;
+    loadInventory(inventory);
+
+    int choice;
+    do {
+        cout << "\n1. Add Item\n2. Update Item\n3. Display Inventory\n4. Exit\nEnter choice: ";
+        cin >> choice;
+        if (choice == 1) {
+            Item it;
+            it.getData();
+            inventory.push_back(it);
+            saveInventory(inventory);
+        } else if (choice == 2) {
+            string searchName;
+            cout << "Enter item name to update: ";
+            cin >> searchName;
+            bool found = false;
+            for (auto &it : inventory) {
+                if (it.name == searchName) {
+                    cout << "Enter new quantity and price: ";
+                    cin >> it.qty >> it.price;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) cout << "Item not found!" << endl;
+            saveInventory(inventory);
+        } else if (choice == 3) {
+            cout << "\n--- Inventory ---\n";
+            for (auto &it : inventory) it.display();
+        }
+    } while (choice != 4);
+
+    return 0;
+}
