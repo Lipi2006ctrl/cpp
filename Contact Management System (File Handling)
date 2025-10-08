@@ -1,0 +1,46 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class Contact {
+    string name, phone, email;
+public:
+    void getData() {
+        cout << "Enter Name: ";
+        cin >> name;
+        cout << "Enter Phone: ";
+        cin >> phone;
+        cout << "Enter Email: ";
+        cin >> email;
+    }
+    void saveToFile() {
+        ofstream fout("contacts.txt", ios::app);
+        fout << name << " " << phone << " " << email << endl;
+        fout.close();
+    }
+    void displayAll() {
+        ifstream fin("contacts.txt");
+        string n, p, e;
+        cout << "\n--- Contact List ---\n";
+        while (fin >> n >> p >> e) {
+            cout << "Name: " << n << ", Phone: " << p << ", Email: " << e << endl;
+        }
+        fin.close();
+    }
+};
+
+int main() {
+    Contact c;
+    int choice;
+    do {
+        cout << "\n1. Add Contact\n2. Display Contacts\n3. Exit\nEnter choice: ";
+        cin >> choice;
+        if (choice == 1) {
+            c.getData();
+            c.saveToFile();
+        } else if (choice == 2) {
+            c.displayAll();
+        }
+    } while (choice != 3);
+    return 0;
+}
