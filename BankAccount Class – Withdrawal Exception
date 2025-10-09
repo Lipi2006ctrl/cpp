@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+class BankAccount {
+    double balance;
+public:
+    BankAccount(double b) { balance = b; }
+
+    void withdraw(double amount) {
+        if (amount > balance)
+            throw runtime_error("Error: Withdrawal exceeds balance!");
+        balance -= amount;
+        cout << "Withdrawal successful. Remaining balance: " << balance << endl;
+    }
+};
+
+int main() {
+    BankAccount acc(5000);
+    double amt;
+    cout << "Enter amount to withdraw: ";
+    cin >> amt;
+
+    try {
+        acc.withdraw(amt);
+    } catch (runtime_error &e) {
+        cout << e.what() << endl;
+    }
+
+    return 0;
+}
