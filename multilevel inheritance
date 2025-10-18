@@ -1,0 +1,96 @@
+Multi-Level Inheritance:
+#include <iostream>
+using namespace std;
+
+// Base class
+class Student {
+public:
+    int rollNo;
+    string name;
+
+    void getStudent() {
+        cout << "Enter Roll Number: ";
+        cin >> rollNo;
+        cout << "Enter Name: ";
+        cin >> name;
+    }
+
+    void showStudent() {
+        cout << "Roll Number: " << rollNo << endl;
+        cout << "Name: " << name << endl;
+    }
+};
+
+// Derived from Student
+class Exam : public Student {
+public:
+    float marks1, marks2, marks3;
+
+    void getMarks() {
+        cout << "Enter marks in 3 subjects: ";
+        cin >> marks1 >> marks2 >> marks3;
+    }
+
+    void showMarks() {
+        cout << "Marks 1: " << marks1 << endl;
+        cout << "Marks 2: " << marks2 << endl;
+        cout << "Marks 3: " << marks3 << endl;
+    }
+};
+
+// Derived from Exam
+class Result : public Exam {
+public:
+    float total, average;
+
+    void calculateResult() {
+        total = marks1 + marks2 + marks3;
+        average = total / 3;
+    }
+
+    void showResult() {
+        cout << "Total Marks: " << total << endl;
+        cout << "Average: " << average << endl;
+        if (average >= 50)
+            cout << "Result: Pass" << endl;
+        else
+            cout << "Result: Fail" << endl;
+    }
+};
+
+// Derived from Result (Multi-level)
+class Sports : public Result {
+public:
+    float sportsMarks, finalScore;
+
+    void getSports() {
+        cout << "Enter Sports Marks: ";
+        cin >> sportsMarks;
+    }
+
+    void calculateFinal() {
+        finalScore = average + sportsMarks;
+    }
+
+    void showFinal() {
+        cout << "Sports Marks: " << sportsMarks << endl;
+        cout << "Final Score (Including Sports): " << finalScore << endl;
+    }
+};
+
+int main() {
+    Sports s;
+    s.getStudent();
+    s.getMarks();
+    s.calculateResult();
+    s.getSports();
+    s.calculateFinal();
+
+    cout << "\n--- Student Final Report ---\n";
+    s.showStudent();
+    s.showMarks();
+    s.showResult();
+    s.showFinal();
+
+    return 0;
+}
