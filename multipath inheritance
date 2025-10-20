@@ -1,0 +1,90 @@
+Multipath inheritance: (Virtual base class)
+
+#include <iostream>
+using namespace std;
+
+// Base class
+class Student {
+public:
+    int rollNo;
+    string name;
+
+    void getStudent() {
+        cout << "Enter Roll Number: ";
+        cin >> rollNo;
+        cout << "Enter Name: ";
+        cin >> name;
+    }
+
+    void showStudent() {
+        cout << "Roll Number: " << rollNo << endl;
+        cout << "Name: " << name << endl;
+    }
+};
+
+// Derived from Student (virtual)
+class InternalExam : virtual public Student {
+public:
+    float internalMarks;
+
+    void getInternal() {
+        cout << "Enter Internal Exam Marks: ";
+        cin >> internalMarks;
+    }
+
+    void showInternal() {
+        cout << "Internal Exam Marks: " << internalMarks << endl;
+    }
+};
+
+// Another derived from Student (virtual)
+class ExternalExam : virtual public Student {
+public:
+    float externalMarks;
+
+    void getExternal() {
+        cout << "Enter External Exam Marks: ";
+        cin >> externalMarks;
+    }
+
+    void showExternal() {
+        cout << "External Exam Marks: " << externalMarks << endl;
+    }
+};
+
+// Derived from both InternalExam and ExternalExam (Multipath)
+class Result : public InternalExam, public ExternalExam {
+public:
+    float total, average;
+
+    void calculate() {
+        total = internalMarks + externalMarks;
+        average = total / 2;
+    }
+
+    void showResult() {
+        cout << "\n--- Student Final Result ---\n";
+        showStudent();
+        showInternal();
+        showExternal();
+        cout << "Total Marks: " << total << endl;
+        cout << "Average: " << average << endl;
+
+        if (average >= 50)
+            cout << "Result: Pass\n";
+        else
+            cout << "Result: Fail\n";
+    }
+};
+
+int main() {
+    Result r;
+    r.getStudent();
+    r.getInternal();
+    r.getExternal();
+    r.calculate();
+    r.showResult();
+
+    return 0;
+}
+
