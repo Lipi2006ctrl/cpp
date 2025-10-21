@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+class Media {
+protected:
+    string title;
+    float price;
+
+public:
+    Media(string t, float p) : title(t), price(p) {}
+    virtual void displayDetails() {
+        cout << "Title: " << title << ", Price: " << price << endl;
+    }
+    virtual ~Media() {}
+};
+
+class Book : public Media {
+    string author;
+public:
+    Book(string t, float p, string a) : Media(t, p), author(a) {}
+    void displayDetails() override {
+        cout << "Book - Title: " << title << ", Author: " << author << ", Price: " << price << endl;
+    }
+};
+
+class Magazine : public Media {
+    int issueNumber;
+public:
+    Magazine(string t, float p, int issue) : Media(t, p), issueNumber(issue) {}
+    void displayDetails() override {
+        cout << "Magazine - Title: " << title << ", Issue: " << issueNumber << ", Price: " << price << endl;
+    }
+};
+
+class DVD : public Media {
+    int duration;
+public:
+    DVD(string t, float p, int d) : Media(t, p), duration(d) {}
+    void displayDetails() override {
+        cout << "DVD - Title: " << title << ", Duration: " << duration << " mins, Price: " << price << endl;
+    }
+};
+
+int main() {
+    Media *library[3];
+    library[0] = new Book("C++ Basics", 300, "Bjarne");
+    library[1] = new Magazine("Tech Today", 150, 45);
+    library[2] = new DVD("Movie X", 200, 120);
+
+    cout << "\n--- Media Library ---\n";
+    for (int i = 0; i < 3; i++) {
+        library[i]->displayDetails();
+        delete library[i];
+    }
+
+    return 0;
+}
