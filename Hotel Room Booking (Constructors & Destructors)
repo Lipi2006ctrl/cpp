@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+class Room {
+    int roomNumber;
+    string type;
+    float pricePerNight;
+    bool isBooked;
+
+public:
+    Room(int r, string t, float p, bool b) {
+        roomNumber = r;
+        type = t;
+        pricePerNight = p;
+        isBooked = b;
+    }
+
+    void display() {
+        cout << "\nRoom Number: " << roomNumber;
+        cout << "\nType: " << type;
+        cout << "\nPrice/Night: " << pricePerNight;
+        cout << "\nBooked: " << (isBooked ? "Yes" : "No") << endl;
+    }
+
+    ~Room() {
+        cout << "Room " << roomNumber << " object deleted." << endl;
+    }
+};
+
+int main() {
+    Room r1(101, "Deluxe", 2500.0, false);
+    r1.display();
+    return 0;
+}
