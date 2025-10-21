@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+class MyString {
+    string str;
+
+public:
+    MyString(string s = "") { str = s; }
+
+    // Overload + for concatenation
+    MyString operator+(MyString &s2) {
+        return MyString(str + s2.str);
+    }
+
+    // Overload == for comparison
+    bool operator==(MyString &s2) {
+        return str == s2.str;
+    }
+
+    // Overload [] for character access
+    char operator[](int index) {
+        return str[index];
+    }
+
+    void display() { cout << str << endl; }
+};
+
+int main() {
+    MyString s1("Hello"), s2("World"), s3;
+    s3 = s1 + s2;
+    s3.display();
+
+    cout << "s1 == s2 ? " << (s1 == s2 ? "True" : "False") << endl;
+    cout << "Character at index 1 in s1: " << s1[1] << endl;
+    return 0;
+}
