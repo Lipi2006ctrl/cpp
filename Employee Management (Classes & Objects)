@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+class Employee {
+    int empID;
+    string name, designation;
+    float salary;
+
+public:
+    void setDetails(int id, string n, string d, float s) {
+        empID = id;
+        name = n;
+        designation = d;
+        salary = s;
+    }
+
+    void updateSalary(float newSalary) {
+        salary = newSalary;
+    }
+
+    float yearlyBonus() {
+        return salary * 0.1; // 10% bonus
+    }
+
+    void display() {
+        cout << "\nEmployee ID: " << empID;
+        cout << "\nName: " << name;
+        cout << "\nDesignation: " << designation;
+        cout << "\nSalary: " << salary;
+        cout << "\nYearly Bonus: " << yearlyBonus() << endl;
+    }
+};
+
+int main() {
+    Employee e1;
+    e1.setDetails(101, "Alice", "Manager", 50000);
+    e1.display();
+    e1.updateSalary(55000);
+    cout << "\nAfter salary update:";
+    e1.display();
+    return 0;
+}
