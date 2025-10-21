@@ -1,0 +1,41 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main() {
+    ofstream fout("weather.txt");
+    fout << "30 70 5\n";
+    fout << "32 65 0\n";
+    fout << "29 80 10\n";
+    fout.close();
+
+    ifstream fin("weather.txt");
+    float temp, humidity, rain;
+    float sumT = 0, sumH = 0, sumR = 0;
+    int count = 0;
+
+    try {
+        if (!fin)
+            throw runtime_error("File not found!");
+
+        while (fin >> temp >> humidity >> rain) {
+            sumT += temp;
+            sumH += humidity;
+            sumR += rain;
+            count++;
+        }
+
+        if (count == 0)
+            throw runtime_error("No valid data found!");
+
+        cout << "Average Temperature: " << sumT / count << endl;
+        cout << "Average Humidity: " << sumH / count << endl;
+        cout << "Average Rainfall: " << sumR / count << endl;
+    } catch (exception &e) {
+        cout << "Error: " << e.what() << endl;
+    }
+
+    fin.close();
+    return 0;
+}
