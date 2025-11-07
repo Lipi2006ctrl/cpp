@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+template <typename T1, typename T2 = int>
+class Example {
+    T1 a;
+    T2 b;
+public:
+    Example(T1 x, T2 y) {
+        a = x;
+        b = y;
+    }
+
+    void show() {
+        cout << "a = " << a << ", b = " << b << endl;
+    }
+};
+
+int main() {
+    Example<double, char> e1(3.5, 'A');  // both types given
+    Example<string> e2("Hello", 100);    // T2 defaults to int
+
+    e1.show();
+    e2.show();
+
+    return 0;
+}
