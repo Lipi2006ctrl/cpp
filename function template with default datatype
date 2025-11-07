@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+template <typename T1, typename T2 = int>
+void multiply(T1 a, T2 b) {
+    cout << "Product = " << a * b << endl;
+}
+
+int main() {
+    multiply(5, 2.5);    // both specified
+    multiply(10, 3);     // default used
+    multiply(4.5, 2);    // mixed
+    return 0;
+}
