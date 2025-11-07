@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+template <typename T>
+void display(T a) {
+    cout << "Template function: " << a << endl;
+}
+
+void display(double a) {
+    cout << "Normal function (double): " << a << endl;
+}
+
+int main() {
+    display(10);          // Template (int)
+    display(10.5);        // Normal function (double)
+    display<>(20.5);      // Forces template version
+    return 0;
+}
