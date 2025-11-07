@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+
+template <typename T>
+void show(T a) {
+    cout << "Template function: " << a << endl;
+}
+
+void show(int a) {
+    cout << "Normal function: " << a << endl;
+}
+
+int main() {
+    show(10);       // Calls normal function
+    show(3.14);     // Calls template function
+    show('A');      // Calls template function
+    return 0;
+}
