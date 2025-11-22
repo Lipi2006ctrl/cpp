@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+// Function prototypes (declarations)
+void greet();
+int add(int, int);
+double average(double, double);
+
+int main() {
+    greet();   // calling the function
+
+    int sum = add(10, 20);
+    cout << "Sum = " << sum << endl;
+
+    double avg = average(5.5, 3.5);
+    cout << "Average = " << avg << endl;
+
+    return 0;
+}
+
+// Function definitions (after main)
+void greet() {
+    cout << "Hello! This is a function prototype example." << endl;
+}
+
+int add(int a, int b) {
+    return a + b;
+}
+
+double average(double x, double y) {
+    return (x + y) / 2.0;
+}
