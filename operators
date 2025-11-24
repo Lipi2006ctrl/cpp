@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int a = 10, b = 3;
+
+    // Arithmetic Operators
+    cout << "Arithmetic Operators:\n";
+    cout << "a + b = " << (a + b) << endl;
+    cout << "a - b = " << (a - b) << endl;
+    cout << "a * b = " << (a * b) << endl;
+    cout << "a / b = " << (a / b) << endl;
+    cout << "a % b = " << (a % b) << endl;
+
+    // Relational Operators
+    cout << "\nRelational Operators:\n";
+    cout << "a > b : " << (a > b) << endl;
+    cout << "a < b : " << (a < b) << endl;
+    cout << "a == b : " << (a == b) << endl;
+    cout << "a != b : " << (a != b) << endl;
+
+    // Logical Operators
+    cout << "\nLogical Operators:\n";
+    cout << "(a > b && b > 0) : " << (a > b && b > 0) << endl;
+    cout << "(a < b || b > 0) : " << (a < b || b > 0) << endl;
+    cout << "!(a == b) : " << !(a == b) << endl;
+
+    // Assignment Operators
+    cout << "\nAssignment Operators:\n";
+    int x = 5;
+    x += 3;   // x = x + 3
+    cout << "x += 3 : " << x << endl;
+    x -= 2;   // x = x - 2
+    cout << "x -= 2 : " << x << endl;
+    x *= 4;   // x = x * 4
+    cout << "x *= 4 : " << x << endl;
+
+    // Increment / Decrement
+    cout << "\nIncrement / Decrement:\n";
+    int y = 7;
+    cout << "y++ = " << y++ << endl;
+    cout << "After y++ : " << y << endl;
+    cout << "++y = " << ++y << endl;
+
+    // Bitwise Operators
+    cout << "\nBitwise Operators:\n";
+    cout << "a & b = " << (a & b) << endl;
+    cout << "a | b = " << (a | b) << endl;
+    cout << "a ^ b = " << (a ^ b) << endl;
+    cout << "~a = " << (~a) << endl;
+
+    // Ternary Operator
+    cout << "\nTernary Operator:\n";
+    int max = (a > b) ? a : b;
+    cout << "Max = " << max << endl;
+
+    return 0;
+}
