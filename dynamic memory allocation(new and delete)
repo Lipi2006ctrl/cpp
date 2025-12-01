@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int *p = new int;   // allocate memory
+    *p = 50;
+
+    cout << "Value = " << *p;
+
+    delete p;  // free memory
+    return 0;
+}
